@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+html .rp-warp a { text-decoration: none; border-radius: 5%; color: #FFFEFF; }
+.rp-warp ul li { float: left; }
+html .rp-warp h3 { font-family: Lucida Sans Unicode, YouYuan, \5E7C\5706, Microsoft YaHei, \5FAE\8F6F\96C5\9ED1; font-weight: bold; }
+.rp-warp li, p { font-family: Microsoft YaHei, \5FAE\8F6F\96C5\9ED1; font-weight: 500; }
+.rp-warp .wd-max { width: 100%; min-width: 960px; }
+.rp-warp .inside { width: 960px; margin: 0 auto; padding: 25px 0; }
+.rp-warp .btn-small { height: 40px; background: #28B1E5; }
+/*按钮*/
+.rp-warp .abtn-download { position:relative;background:url(downloadPic.png) 18px 16px no-repeat; width: 180px; height: 60px; border-radius: 3px; font-size: 14px; color: #FFF; display: block; font-family: Lucida Sans Unicode, YouYuan, \5E7C\5706, Microsoft YaHei, \5FAE\8F6F\96C5\9ED1;background-color:#19608e ;border-bottom:none; line-height: 150%;}
+.rp-warp .abtn-download:hover { background-color: #1E73AC; border-bottom:none; }
+.rp-warp .abtn-download b { font-size: 20px; text-shadow: 0 0 1px #666; font-weight: normal; padding: 10px 0 0 60px; display: block; }
+.rp-warp .abtn-download p { display: block; font-size: 12px;padding:0px;}
+/*按钮结束*/
+.rp-warp .rp-line { background: url(line.png)no-repeat center center; height: 20px; width: 960px; margin: 0 auto; }
+.rp-warp { background: url(mainPic.png) }
+.rp-warp .head { line-height: 60px; height: 60px; position:fixed; z-index: 100; padding: 15px 0; background: #1C5A7F; }
+.rp-warp .head .headwarp { width: 960px; margin: 0 auto; }
+.rp-warp .head ul { padding-left: 30px; }
+.rp-warp .head ul li a { padding: 5px 20px; font-family: Microsoft YaHei, \5FAE\8F6F\96C5\9ED1; font-size: 16px; line-height: 63px; }
+.rp-warp .head ul li a:hover { color: #EEE; }
+.rp-warp .main { background: url(common/commonBk.png);}
+.rp-warp .main .zhezhao{position:relative;background:white;z-index:0;width:100%;}
+.rp-warp .main .main-inside { padding: 40px 0 0; width: 960px; height: 630px; }
+.rp-warp .main .banner { left: -120px; filter: alpha(opacity=0); -moz-opacity: 0; opacity: 0; bottom: 10px; }
+.rp-warp .main .main-function { bottom: 153px; right: 45px; height: 200px; height: 300px; }
+.rp-warp .main .big-word { color: #FFFFFF; font: 500 45px 方正综艺简体; }
+.rp-warp .main ol li { color: #FFFFFF; padding: 10px 0; text-align: right; font-size: 20px; font-family: Microsoft YaHei, \5FAE\8F6F\96C5\9ED1; }
+.rp-warp .main ol li b { font-size: 8px; font-weight: 100; display: inline-block; height: 26px; line-height: 26px; width: 70px; padding: 0 0 0 10px; }
+.rp-warp .main .download { bottom: 0px; right: 0px; }
+.rp-warp .intro { }
+.rp-warp .intro .int-word { width: 380px; margin: 110px 0; }
+.rp-warp .intro .l{left:60px;}
+.rp-warp .intro .r{right:60px;}
+.rp-warp .intro h3 { text-align: left; font-size: 34px; margin-bottom: 20px;color:#565656}
+.rp-warp .intro p { font-size: 16px; color: #8a8a8a; margin-bottom:7px; }
+.rp-warp .intro .four { margin: 0 auto; text-align: center; }
+.rp-warp .intro .four .int-word { width: 100%; margin: 20px 0 10px; }
+.rp-warp .intro .four .int-word h3 { text-align: center; }
+.rp-warp .example { }
+.rp-warp .example a { border: 0; margin: 0; padding: 0; display: block; float: left; width: 25%; border-radius: 0px; }
+.rp-warp .example a:hover { opacity: .7; }
+.rp-warp .example img { border: 0; margin: 0; padding: 0; width: 100%; }
+.rp-warp .example-word { color: #FFFFFF; display: none; bottom:0; width: 100%; alpha(opacity=60);
+-moz-opacity: 0.6; opacity: 0.6; text-align: center; background: #05315e; font-size: 20px; height: 64px; line-height: 72px; }
+.rp-warp .liucheng { }
+.rp-warp .liucheng .inside { padding: 100px 0px; }
+.rp-warp .liucheng img { margin: 0 auto; display: block; }
+
+#content { width: 400px; margin: 40px auto 0 auto; padding: 0 60px 30px 60px; border: solid 1px #cbcbcb; background: #fafafa; -moz-box-shadow: 0px 0px 10px #cbcbcb; -webkit-box-shadow: 0px 0px 10px #cbcbcb; }
+.chords { background: #F8F8F8; box-shadow: 0 0 5px #CCC; border-bottom: 1px solid #FFF; border-top: 1px solid #FFF; }
+/* prologue */
+.prologue { text-align: center }
+.prologue-capates { width: 25%; float: left; text-align: center; padding: 26px 0; }
+.prologue-capates h3 { text-align: center; font-size: 16px; margin: 20px 0 2px; }
+.prologue-capates img { width: 130px; height: 80px;color:#565656}
+

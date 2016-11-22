@@ -1,0 +1,18 @@
+[
+	"common/js/Configure.js",
+	"common/js/three.js",
+	"common/js/ZDiyCurves.js",
+	"common/js/BendModifier.js",
+    "common/js/SoftenGeometryNormal.js",
+    "common/js/csg.js",
+    "common/js/CutGeometry.js",
+	"common/js/EditorControls.js",
+	"common/js/MaterialManage.js",
+	"common/js/LightManage.js",
+	"common/js/Post.js",
+	"common/js/Base64.js",
+	"common/js/MD5.js",
+	"common/js/Viewport.js",
+	"common/js/CreateObject.js",
+	"common/js/Utils.js"
+]

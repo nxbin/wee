@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+.shop-main center{ text-align:center;}
+.shop-main center img { margin: 0 auto;}
+.shop-main .inline { display: inline; }
+.shop-main h3{ font-size:22px; text-align:center; padding-bottom: 10px; line-height:39.6px;}
+.shop-main h4{ font-size:18px; font-weight:bold; text-align:left; margin-top:20px; margin-bottom:5px;}
+.shop-main .red{ color:#F00;}
+.shop-main ul{ margin-bottom:20px; margin-top:0;}
+.shop-main ul li { font-size:14px; font-weight:bold; margin-bottom:5px;}
+.shop-main .num li{ list-style: inside decimal;}
+.shop-main .rod li{ list-style:inside disc;}
+.shop-main .block { display: block; }
+.shop-main p{ font-size:14px; margin:10px 0;}
+.shop-main h5{ font-size:16px; text-align:center; margin:15px 0;}
+.shop-main .up-left{ font-weight:normal; margin:5px 0; border-bottom:#aaa solid 1px;}

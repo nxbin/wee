@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Test</title>
+    <script type="text/javascript" src="../common/js/three.js"></script>
+    <script type="text/javascript" src="../common/js/Configure.js"></script>
+    <script type="text/javascript" src="../common/js/Utils.js"></script>
+    <script type="text/javascript" src="../common/js/MD5.js"></script>
+    <script type="text/javascript" src="../common/js/Base64.js"></script>
+    <script type="text/javascript" src="../common/js/Post.js"></script>
+    <script type="text/javascript" src="../common/js/LightManage.js"></script>
+    <script type="text/javascript" src="../common/js/build/fonts/aldrich.js"></script>
+    <script type="text/javascript" src="../common/js/build/fonts/norican.js"></script>
+    <script type="text/javascript" src="../common/js/build/fonts/molle.js"></script>
+    <script type="text/javascript" src="../common/js/build/fonts/engagement.js"></script>
+    <script type="text/javascript" src="../common/js/build/fonts/damion.js"></script>
+    <script type="text/javascript" src="../common/js/MaterialManage.js"></script>
+    <script type="text/javascript" src="../common/js/EditorControls.js"></script>
+    <script type="text/javascript" src="../common/js/ZDiyCurves.js"></script>
+    <script type="text/javascript" src="../common/js/Viewport.js"></script>
+    <script type="text/javascript" src="./SYRing.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+        <canvas id="WEBGLTESTCANVAS" width="800" height="800"></canvas>
+
+    </div>
+
+    <p>文字: <input id="shuYuanRingText" type="text" value = "♈♏♐♍♓♑♋♌♉♊♒♎"/></p>
+    <p>
+        字体: 
+        <select id="shuYuanRingFont">
+            <option value ="aldrich">Aldrich</option>
+            <option value ="norican">Norican</option>
+            <option value ="molle">Molle</option>
+            <option value="engagement">Engagement</option>
+            <option value="damion">Damion</option>
+        </select>
+    </p>
+    <p>
+        材质: 
+        <select id="shuYuanRingMaterial">
+            <option value ="127">925银</option>
+            <option value ="128">18k红金</option>
+            <option value ="129" >18k白金</option>
+            <option value ="130" >18k黄金</option>
+        </select>
+    </p>
+
+    <input id="shuYuanChainOnOff" type="button" value = "显示或者隐藏链子"/>
+    
+
+    <script type="text/javascript">
+    // var words = "";
+
+    // var canvas = document.getElementById("WEBGLTESTCANVAS");
+
+    // var textElement = document.getElementById("shuYuanRingText");
+
+    // // 创建物体
+    // var materialIDS = {
+    //     127 : "925silver",
+    //     128 : "18kgold_red",
+    //     129 : "18kgold_white",
+    //     130 : "18kgold_yellow"
+    // }; 
+
+    // var parameters = {
+    //     height : 0.7,
+    //     size : 2,
+    //     curveSegments : 5,
+
+    //     font : "norican", //(verlag book), (verlag light italic), helvetiker, aldrich, rawsymbols, damion, engagement, molle, norican, rochester, yellowtail
+    //     weight : "normal", // normal bold
+    //     style : "normal", // normal italic
+
+    //     bevelThickness : 0.01,
+    //     bevelSize : 0.01,
+    //     bevelSegments : 5,
+    //     bevelEnabled : true,
+    // };
+    // parameters.amount = parameters.height !== undefined ? parameters.height : 50;
+
+    // var texturePath = "../common/textures/";
+    // var materialManage = new MaterialManage(texturePath, ".jpg");
+
+    // var materialElement = document.getElementById("shuYuanRingMaterial");
+    // materialManage.setMaterialName(materialIDS[materialElement.value]);
+
+    // var zRingGeometry = new Utils.ZGeometry();
+    // var count = 9;
+    // zRingGeometry.parse("./ring.mesh", function(g) {
+    //     var group = new THREE.Object3D(), 
+    //         ringMesh = new THREE.Mesh(g, materialManage.material),
+    //         textGeometry, textMesh, offsetMatrix = new THREE.Matrix4(), s;
+
+    //     group.add(ringMesh);
+
+    //     // 加入文件
+    //     var text = textElement.value;
+    //     var words = getWorlds(text);
+    //     if(words.length === 9) {
+    //         for(var i=0; i<9; i++) {
+    //             textGeometry = new THREE.ExtrudeGeometry(THREE.FontUtils.generateShapes(words[i], parameters), parameters);
+    //             textGeometry.computeBoundingBox();
+    //             offsetMatrix.setPosition(new THREE.Vector3(
+    //                 -(textGeometry.boundingBox.max.x + textGeometry.boundingBox.min.x)/2,
+    //                 -(textGeometry.boundingBox.max.y + textGeometry.boundingBox.min.y)/2 + 0.02,
+    //                 -(textGeometry.boundingBox.max.z + textGeometry.boundingBox.min.z)/2+8.5
+    //             ));
+    //             textGeometry.applyMatrix(offsetMatrix);
+    //             textMesh = new THREE.Mesh(textGeometry, materialManage.material);
+    //             textMesh.rotation.set(0, 2 * Math.PI * i / count, 0);
+    //             s = 2.7/(textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y);
+    //             textMesh.scale.set(s, s, 1);
+    //             group.add(textMesh);
+    //         }
+    //     }
+
+    //     var backgroundUrl = "./IMG_9611.jpg";
+    //     new viewport(canvas, group, new THREE.Vector3(0, 0, 30), backgroundUrl)
+
+    // });
+
+    // function getWorlds(input) {
+    //     var result = "";
+    //     var len = input.length;
+    //     var i;
+    //     if(len>0 && len<=9) {
+    //         while(true) {
+    //             for(i=0; i<len; i++) {
+    //                 if(result.length === 9) return result;
+    //                 else result += input[i];
+    //             }
+    //         }
+    //     }
+
+    //     return result;
+
+    // };
+
+    // function createTexts() {
+
+    // };
+
+
+    // if(materialElement !== null) {
+    //     materialElement.onchange = function(event) {
+    //         materialManage.setMaterialName(materialIDS[event.target.value]);
+    //         // 计算价格
+    //         // getprice();
+    //     };
+    // }
+    execute();
+    </script>
+
+</body>
+
+</html>

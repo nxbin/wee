@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Test</title>
+    <script type="text/javascript" src="../../../common/js/three.js"></script>
+    <script type="text/javascript" src="../../../common/js/Configure.js"></script>
+    <script type="text/javascript" src="../../../common/js/Utils.js"></script>
+    <script type="text/javascript" src="../../../common/js/MD5.js"></script>
+    <script type="text/javascript" src="../../../common/js/Base64.js"></script>
+    <script type="text/javascript" src="../../../common/js/Post.js"></script>
+    <script type="text/javascript" src="../../../common/js/LightManage.js"></script>
+    <script type="text/javascript" src="../../../common/js/CreateObject.js"></script>
+    <script type="text/javascript" src="../../../common/js/BendModifier.js"></script>
+    <script type="text/javascript" src="../../../common/js/build/fonts/aldrich.js"></script>
+    <script type="text/javascript" src="../../../common/js/build/fonts/norican.js"></script>
+    <script type="text/javascript" src="../../../common/js/build/fonts/molle.js"></script>
+    <script type="text/javascript" src="../../../common/js/build/fonts/engagement.js"></script>
+    <script type="text/javascript" src="../../../common/js/build/fonts/damion.js"></script>
+    <script type="text/javascript" src="../../../common/js/MaterialManage.js"></script>
+    <script type="text/javascript" src="../../../common/js/EditorControls.js"></script>
+    <script type="text/javascript" src="../../../common/js/ZDiyCurves.js"></script>
+    <script type="text/javascript" src="../../../common/js/Viewport.js"></script>
+    <script type="text/javascript" src="./SYRing.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+        <canvas id="web3dViewport" width="800" height="800"></canvas>
+
+    </div>
+    <p>
+        动物: 
+        <select id="web3dSYRing01Animal">
+            <option value ="mouse">鼠</option>
+            <option value ="cattle">牛</option>
+            <option value ="tiger">虎</option>
+            <option value ="rabbit">兔</option>
+            <option value ="dargon">龙</option>
+            <option value ="snake">蛇</option>
+            <option value ="horse" selected="selected">马</option>
+            <option value ="sheep">羊</option>
+            <option value ="monkey">猴</option>
+            <option value ="chicken">鸡</option>
+            <option value ="dog">狗</option>
+            <option value ="pig">猪</option>
+        </select>
+    </p>
+    <p>
+        尺寸: 
+        <select id="web3dSYRing01Size">
+            <option value ="44">4# / 44mm</option>
+            <option value ="45">5# / 45mm</option>
+            <option value="46">6# / 46mm</option>
+            <option value="47">7# / 47mm</option>
+            <option value ="48">8# / 48mm</option>
+            <option value ="49">9# / 49mm</option>
+            <option value="50">10# / 50mm</option>
+            <option value="51">11# / 51mm</option>
+            <option value ="52">12# / 52mm</option>
+            <option value ="53">13# / 53mm</option>
+            <option value="54">14# / 54mm</option>
+            <option value="55">15# / 55mm</option>
+            <option value ="56">16# / 56mm</option>
+            <option value ="57" selected="selected">17# / 57mm</option>
+            <option value="58">18# / 58mm</option>
+            <option value="59">19# / 59mm</option>
+            <option value="60">20# / 60mm</option>
+        </select>
+    </p>
+    <p>
+        材质: 
+        <select id="web3dSYRing01Material">
+            <option value ="127">925银</option>
+            <option value ="128">18k红金</option>
+            <option value ="129" >18k白金</option>
+            <option value ="130" >18k黄金</option>
+        </select>
+    </p>
+
+    <input id="suYuanChainOnOff" type="button" value = "显示或者隐藏链子"/>
+    <script type="text/javascript">
+        var canvas = document.getElementById("web3dViewport");
+        var pmg_global_background = "../../bg.jpg";
+        var webpath = "/city/static";
+        execute();
+    </script>
+
+</body>
+
+</html>

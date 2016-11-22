@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Test</title>
+    <script type="text/javascript" src="../common/js/three.js"></script>
+    <script type="text/javascript" src="../common/js/ExtrudeGeometry2.js"></script>
+    <script type="text/javascript" src="../common/js/Configure.js"></script>
+    <script type="text/javascript" src="../common/js/Utils.js"></script>
+    <script type="text/javascript" src="../common/js/MD5.js"></script>
+    <script type="text/javascript" src="../common/js/Base64.js"></script>
+    <script type="text/javascript" src="../common/js/Post.js"></script>
+    <script type="text/javascript" src="../common/js/CreateObject.js"></script>
+    <script type="text/javascript" src="../common/js/LightManage.js"></script>
+    <script type="text/javascript" src="../common/js/MaterialManage.js"></script>
+    <script type="text/javascript" src="../common/js/EditorControls.js"></script>
+    <script type="text/javascript" src="../common/js/ZDiyCurves.js"></script>
+    <script type="text/javascript" src="./Mirror.js"></script>
+    <script type="text/javascript" src="../common/js/Viewport.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+        <canvas id="WEBGLTESTCANVAS" width="1000" height="1000"></canvas>
+
+    </div>
+    <input type="text" value="0" onchange="setTime(e)"/>
+    <input type="button" value="截图" onclick="screenshot()"/>
+
+    <script type="text/javascript">
+    var canvas = document.getElementById("WEBGLTESTCANVAS");
+
+    // 创建物体
+    // var geometry = new THREE.PlaneGeometry(1, 1);
+    // geometry.skinWeights = [new THREE.Vector4(1, 0, 0, 0), new THREE.Vector4(0, 1, 0, 0), new THREE.Vector4(1, 0, 0, 0), new THREE.Vector4(0, 1, 0, 0)];
+    // geometry.skinIndices = [new THREE.Vector4(0, 0, 0, 0), new THREE.Vector4(0, 1, 0, 0), new THREE.Vector4(0, 0, 0, 0), new THREE.Vector4(0, 1, 0, 0)];
+    // geometry.bones = [
+    //     {
+    //         "parent" : -1,
+    //         "name"   : "joint00",
+    //         "pos"    : [0,10,0],
+    //         "scl"    : [1,1,1],
+    //         "rot"    : [0.960281,-0.34781,-0.0184487],
+    //         "rotq"   : [0.00837941,-0.00303646,-0.000135554,0.99996]
+    //     },
+
+    //     {
+    //         "parent" : 0,
+    //         "name"   : "joint01",
+    //         "pos"    : [0,5,0],
+    //         "scl"    : [1,1,1],
+    //         "rot"    : [2.99021,-2.1442,2.90165],
+    //         "rotq"   : [0.0265521,-0.0180377,0.0257939,0.999152]
+    //     }
+    // ];
+    // console.log();
+
+    // var loader = new THREE.JSONLoader();
+    // loader.load("./knight.js", function(geometry) {
+    //     var mesh = new THREE.SkinnedMesh(geometry, new THREE.MeshPhongMaterial({color : 0xff7744, skinning:true}));
+    //     console.log(geometry.animation);
+    //     var animation = new THREE.Animation(mesh, geometry.animation);
+    //     animation.loop = false;
+    //     animation.play();
+
+    //     // create a canvas element
+    //     var canvas1 = document.createElement('canvas');
+    //     context1 = canvas1.getContext('2d');
+    //     context1.font = "Bold 10px Arial";
+    //     context1.fillStyle = "rgba(0,255,0,0.95)";
+    //     context1.fillText('高 30 mm', 0, 10);
+        
+    //     // canvas contents will be used for a texture
+    //     var texture1 = new THREE.Texture(canvas1);
+
+    //     texture1.needsUpdate = true;
+        
+    //     ////////////////////////////////////////
+    //     console.log(canvas1.toDataURL());
+    //     var spriteMaterial = new THREE.SpriteMaterial({color : 0xff0000, useScreenCoordinates: true, map : texture1});
+        
+    //     var sprite1 = new THREE.Sprite(spriteMaterial);
+    //     sprite1.scale.set(20,10,1.0);
+    //     // /sprite1.position.set(50, 50, 0);
+    //     mesh.add(sprite1);
+
+    //     var backgroundUrl = "./dark01.jpg";
+    //     new viewport(canvas, sprite1, new THREE.Vector3(0, 0, 30), backgroundUrl);
+
+
+    // });
+
+    // function screenshot() {
+    //     var data = canvas.toDataURL("image/png");
+    //     // console.log(data.split(",")[1]);
+    //     var base64 = new Base64();
+    //     var arrayBuffer = base64.toArrayBuffer(data.split(",")[1]);
+    //     var dataView = new DataView(arrayBuffer, 0);
+    //     for(var i=0; i<dataView.byteLength; i++){
+    //         console.log(dataView.getUint8(i));
+    //     }
+    // }
+
+    //
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e000"]);//["鼠"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e001"]);//["牛"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e002"]);//["虎"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e003"]);//["兔"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e004"]);//["龙"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e005"]);//["蛇"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e006"]);//["马"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e007"]);//["羊"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e008"]);//["猴"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e009"]);//["鸡"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e00a"]);//["狗"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["elements"]["e00b"]);//["猪"]);
+
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♈"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♊"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♋"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♌"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♍"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♎"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♏"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♐"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♑"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♒"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♓"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["♉"]);
+
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅰ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅱ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅲ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅳ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅴ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅵ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅶ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅷ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅸ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅹ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅺ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["Ⅻ"]);
+
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅰ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅱ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅲ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅳ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅴ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅵ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅶ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅷ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅸ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅹ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅺ"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["common"]["romanDisconnectNumerals"]["Ⅻ"]);
+
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["chainLinks"]["1"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["chainLinks"]["2"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["chainLinks"]["3"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["chainLinks"]["4"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["chainLinks"]["5"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["chainLinks"]["6"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["chainLinks"]["7"]);
+
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["A"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["B"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["C"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["D"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["E"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["F"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["G"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["H"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["I"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["J"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["K"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["L"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["M"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["N"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["O"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["P"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["Q"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["R"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["S"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["T"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["U"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["V"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["W"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["X"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["Y"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["mierYangWords"]["Z"]);
+
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["1"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["2"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["3"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["4"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["5"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["6"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["7"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["8"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["9"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["a"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["b"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["c"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["d"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["e"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["f"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["g"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["h"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["ring"]["i"]);
+
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["1"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["2"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["3"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["4"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["5"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["6"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["7"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["8"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["9"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["a"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["b"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["c"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["d"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["e"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["f"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["g"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["h"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["i"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["j"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["specialCharacters"]["necklace"]["k"]);
+
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasRingElement"]["1"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasRingElement"]["2"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasRingElement"]["3"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasRingElement"]["4"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasRingElement"]["5"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasRingElement"]["6"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasRingElement"]["7"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasRingElement"]["8"]);
+
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasNecklaceElement"]["1"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasNecklaceElement"]["2"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasNecklaceElement"]["3"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasNecklaceElement"]["4"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasNecklaceElement"]["5"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasNecklaceElement"]["6"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasNecklaceElement"]["7"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasNecklaceElement"]["8"]);
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["christmasNecklaceElement"]["9"]);
+    // foldovers
+    // var shapes = ZDiyCurves.generateShapes(ZDiyCurves["foldovers"]["e0c8"]);
+     var shapes = ZDiyCurves.generateShapes(ZDiyCurves["foldovers"]["e0cc"]["4"]);
+
+    // console.log(shapes[0].holes);
+    var vec = [
+        new THREE.Vector2(2, 2),
+        new THREE.Vector2(2, -2),
+        new THREE.Vector2(-2, -2),
+        new THREE.Vector2(-2, 2)
+    ];
+    var hol = [
+        new THREE.Vector2(0.2, 0.2),
+        new THREE.Vector2(-0.2, 0.2),
+        new THREE.Vector2(-0.2, -0.2),
+        new THREE.Vector2(0.2, -0.2)
+    ];
+    // shapes = new THREE.Shape(vec);
+    // shapes.holes.push(new THREE.Path(hol));
+    // console.log(shapes.holes);
+    var parameters = {};
+    parameters.amount = parameters.height !== undefined ? parameters.height : 1;
+
+    // defaults
+
+    if ( parameters.bevelThickness === undefined ) parameters.bevelThickness = 0.1;
+    if ( parameters.bevelSegments === undefined ) parameters.bevelSegments = 5;
+    if ( parameters.bevelSize === undefined ) parameters.bevelSize = 0.05;
+    if ( parameters.bevelEnabled === undefined ) parameters.bevelEnabled = true;
+
+    var cGeometry = new THREE.ExtrudeGeometry(shapes, parameters);
+    var cMesh = new THREE.Mesh(cGeometry, new THREE.MeshPhongMaterial({color : 0x666666, side : 0, wireframe : false}));
+
+    cGeometry.computeFaceNormals();
+    cGeometry.computeVertexNormals(true);
+
+    console.log(cGeometry.contourMovementsa);
+    // cMesh.add(new THREE.Line(cGeometry.contorMovementsa, new THREE.LineBasicMaterial( { color: 0xff7744, linewidth: 2 } )));
+    var backgroundUrl = "./dark01.jpg";
+    new viewport(canvas, cMesh, new THREE.Vector3(0, 0, 30), backgroundUrl);
+
+    // var aa = "bv8kk10";
+    // console.log(aa.match(/[a-c0-9]/g));
+    // console.log(aa.split(/[a-c]/g));
+
+    </script>
+
+</body>
+
+</html>
